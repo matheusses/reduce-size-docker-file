@@ -7,7 +7,7 @@ COPY . ./
 
 RUN go mod download && go mod verify
 
-RUN CGO_ENABLED=0 go build -a -installsuffix cgo -o app .
+RUN CGO_ENABLED=0 go build -ldflags "-s -w" -o app .
 
 ## Deploy
 FROM scratch
